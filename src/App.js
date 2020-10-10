@@ -7,7 +7,7 @@ function App() {
     <div className="App">
       <Weather />
       <footer>
-        This project is created by Vera Kuzjo and is an
+        This project was coded by Vera Kuzjo and is
         <a
           href="https://github.com/virysik/react-weather-app-main"
           target="_blank"
