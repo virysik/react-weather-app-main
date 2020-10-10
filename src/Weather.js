@@ -5,7 +5,8 @@ export default function Weather() {
   return (
     <div className="Weather">
       <div className="container">
-        <p>Enter a city:</p>
+        <small>Enter a city:</small>
+
         <form>
           <div className="row">
             <div className="col-6">
@@ -27,6 +28,9 @@ export default function Weather() {
             </div>
           </div>
         </form>
+
+        <br />
+
         <div className="row">
           <div className="col-6">
             <h1>New York</h1>
@@ -39,26 +43,28 @@ export default function Weather() {
             </ul>
           </div>
         </div>
+
         <p>Clear Sky</p>
+
         <div className="row">
-          <div className="clearfix">
-            <div className="col-3">
-              <img
-                src="https://ssl.gstatic.com/onebox/weather/64/sunny.png"
-                alt="clear sky"
-              />
-            </div>
-            <div className="col-3">
-              <h2>15°C</h2>
-            </div>
+          <div className="col-3">
+            <img
+              src="https://ssl.gstatic.com/onebox/weather/64/sunny.png"
+              alt="clear sky"
+            />
           </div>
-          <div className="col-6">
+          <div className="col-3">
+            <h2>15°C</h2>
+          </div>
+          <div className="col-6 ">
             <ul>
               <li>Humidity: 72%</li>
               <li>Wind: 5km/h</li>
             </ul>
           </div>
         </div>
+
+        <br />
         <div className="row">
           <div className="col-2">
             <ul>
