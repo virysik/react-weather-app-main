@@ -11,6 +11,7 @@ function App() {
         <a
           href="https://github.com/virysik/react-weather-app-main"
           target="_blank"
+          rel="noopener noreferrer"
         >
           {" "}
           open-sourced on GitHub
