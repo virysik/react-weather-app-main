@@ -10,22 +10,20 @@ export default function Weather() {
         <form>
           <div className="row">
             <div className="col-6">
-              <input type="search" />
-            </div>
-            <div className="col-3">
               <input
-                type="submit"
-                className="btn btn-secondary"
-                value="search"
+                type="search"
+                className="form-control"
+                autoComplete="off"
               />
             </div>
-            <div className="col-3">
-              <input
-                type="button"
-                className="btn btn-secondary"
-                value="current"
-              />
-            </div>
+
+            <input type="submit" className="btn btn-secondary" value="search" />
+
+            <input
+              type="button"
+              className="btn btn-secondary"
+              value="current"
+            />
           </div>
         </form>
 
