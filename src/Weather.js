@@ -52,7 +52,8 @@ export default function Weather() {
             />
           </div>
           <div className="col-3">
-            <h2>15°C</h2>
+            <h2>15</h2>
+            <span>°C</span>
           </div>
           <div className="col-6 ">
             <ul>
