@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import DateComponent from "./DateComponent";
+import Loader from "react-loader-spinner";
 import "./Weather.css";
 
 export default function Weather(props) {
@@ -101,6 +102,14 @@ export default function Weather(props) {
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${props.defaultCity}&appid=${apiKey}&units=metric`;
     axios.get(apiUrl).then(handleResponse);
 
-    return "Loading...";
+    return (
+      <Loader
+        type="BallTriangle"
+        color="#5a6168"
+        height={100}
+        width={100}
+        timeout={3000}
+      />
+    );
   }
 }
