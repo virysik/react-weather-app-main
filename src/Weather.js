@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import DateComponent from "./DateComponent";
 import "./Weather.css";
 
 export default function Weather(props) {
@@ -14,6 +15,7 @@ export default function Weather(props) {
       temperature: Math.round(response.data.main.temp),
       humidity: response.data.main.humidity,
       wind: Math.round(response.data.wind.speed),
+      date: new Date(response.data.dt * 1000),
     });
   }
 
@@ -53,12 +55,8 @@ export default function Weather(props) {
             <div className="col-6">
               <h1>{weatherData.city}</h1>
             </div>
-            <div className="col-6">
-              <ul>
-                <li>Updated at 11:47</li>
-                <li>10 October</li>
-                <li>Saturday</li>
-              </ul>
+            <div className="col-6 date">
+              <DateComponent date={weatherData.date} />
             </div>
           </div>
 
