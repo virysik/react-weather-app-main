@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import axios from "axios";
-
 import WeatherInfo from "./WeatherInfo";
 import Loader from "react-loader-spinner";
 import "./Weather.css";
 
+
 export default function Weather(props) {
   const [weatherData, setWeatherData] = useState({ loaded: false });
+  let [city, setCity] = useState(props.defaultCity)
+  
   function handleResponse(response) {
-    console.log(response.data);
     setWeatherData({
       loaded: true,
       city: response.data.name,
@@ -21,17 +22,33 @@ export default function Weather(props) {
     });
   }
 
+  function search() {
+    const apiKey = "974437790c20752769b5d2ac36ae13ef";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(handleResponse);
+  }
+
+  function handleSubmit(event) {
+   event.preventDefault();
+   search();
+  }
+
+function handleChange(event) {
+   setCity(event.target.value);
+}
+
   if (weatherData.loaded) {
     return (
       <div className="Weather">
         <div className="container">
           <small>Enter a city:</small>
 
-          <form>
+          <form onSubmit = {handleSubmit}>
             <div className="row">
               <div className="col-6">
                 <input
                   type="search"
+                  onChange = {handleChange}
                   className="form-control"
                   autoComplete="off"
                 />
@@ -53,16 +70,11 @@ export default function Weather(props) {
 
           <br />
           <WeatherInfo data = {weatherData}/>
-          
-          
         </div>
       </div>
     );
   } else {
-    const apiKey = "974437790c20752769b5d2ac36ae13ef";
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${props.defaultCity}&appid=${apiKey}&units=metric`;
-    axios.get(apiUrl).then(handleResponse);
-
+  search(city);
     return (
       <Loader
         type="BallTriangle"
@@ -72,5 +84,6 @@ export default function Weather(props) {
         timeout={3000}
       />
     );
+    
   }
 }
