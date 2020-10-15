@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
-import DateComponent from "./DateComponent";
+
+import WeatherInfo from "./WeatherInfo";
 import Loader from "react-loader-spinner";
 import "./Weather.css";
 
@@ -51,49 +52,9 @@ export default function Weather(props) {
           </form>
 
           <br />
-
-          <div className="row">
-            <div className="col-6">
-              <h1>{weatherData.city}</h1>
-            </div>
-            <div className="col-6 date">
-              <DateComponent date={weatherData.date} />
-            </div>
-          </div>
-
-          <p className="text-capitalize">{weatherData.description}</p>
-
-          <div className="row">
-            <div className="col-3">
-              <img src={weatherData.icon} alt={weatherData.description} />
-            </div>
-            <div className="col-3">
-              <h2>{weatherData.temperature}</h2>
-              <span>°C</span>
-            </div>
-            <div className="col-6 attributes ">
-              <ul>
-                <li>Humidity: {weatherData.humidity}%</li>
-                <li>Wind: {weatherData.wind}km/h</li>
-              </ul>
-            </div>
-          </div>
-
-          <br />
-          <div className="row">
-            <div className="col-2">
-              <ul>
-                <li>14:00</li>
-                <li>
-                  <img
-                    src="https://ssl.gstatic.com/onebox/weather/48/partly_cloudy.png"
-                    alt="cloudy"
-                  />
-                </li>
-                <li>16°C</li>
-              </ul>
-            </div>
-          </div>
+          <WeatherInfo data = {weatherData}/>
+          
+          
         </div>
       </div>
     );
