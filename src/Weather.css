@@ -78,3 +78,7 @@
 .Weather .date {
   padding: 8px 15px;
 }
+
+.Weather .temperature {
+  padding: 0;
+}
