@@ -9,8 +9,12 @@
 
 .Weather h2 {
   display: inline;
-  font-size: 55px;
+  font-size: 65px;
   color: #fff;
+}
+
+.Weather canvas {
+  margin-top: 8px;
 }
 
 .Weather li {
@@ -37,8 +41,9 @@
 
 .Weather span {
   position: relative;
-  top: -28px;
+  top: -32px;
   font-weight: bold;
+  font-size: 20px;
   color: #fff;
 }
 
