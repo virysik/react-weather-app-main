@@ -22,6 +22,19 @@ export default function Weather(props) {
     });
   }
 
+ function showPosition(position) {
+   const latitude = position.coords.latitude;
+   const longitude = position.coords.longitude;
+   const apiKey = "974437790c20752769b5d2ac36ae13ef";
+   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
+
+   axios.get(apiUrl).then(handleResponse);
+}
+
+  function showCurrentPosition() {
+    navigator.geolocation.getCurrentPosition(showPosition)  
+  }
+
   function search() {
     const apiKey = "974437790c20752769b5d2ac36ae13ef";
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
@@ -62,6 +75,7 @@ function handleChange(event) {
 
               <input
                 type="button"
+                onClick = {showCurrentPosition}
                 className="btn btn-secondary"
                 value="current"
               />
@@ -74,7 +88,7 @@ function handleChange(event) {
       </div>
     );
   } else {
-  search(city);
+  search();
     return (
       <Loader
         type="BallTriangle"
