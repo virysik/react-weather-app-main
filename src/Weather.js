@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import WeatherInfo from "./WeatherInfo";
+import WeatherForecast from "./WeatherForecast";
 import Loader from "react-loader-spinner";
 import "./Weather.css";
 
@@ -10,6 +11,7 @@ export default function Weather(props) {
   let [city, setCity] = useState(props.defaultCity)
   
   function handleResponse(response) {
+    console.log(response.data);
     setWeatherData({
       loaded: true,
       city: response.data.name,
@@ -19,6 +21,8 @@ export default function Weather(props) {
       humidity: response.data.main.humidity,
       wind: Math.round(response.data.wind.speed),
       date: new Date(response.data.dt * 1000),
+      latitude: response.data.coord.lat,
+      longitude: response.data.coord.lon
     });
   }
 
@@ -56,36 +60,38 @@ function handleChange(event) {
         <div className="container">
           <small>Enter a city:</small>
 
-          <form onSubmit = {handleSubmit}>
-            <div className="row">
-              <div className="col-6">
-                <input
-                  type="search"
-                  onChange = {handleChange}
-                  className="form-control"
-                  autoComplete="off"
-                />
-              </div>
+           <form onSubmit = {handleSubmit}>
+             <div className="row">
+               <div className="col-6">
+                 <input
+                   type="search"
+                   onChange = {handleChange}
+                   className="form-control"
+                   autoComplete="off"
+                 />
+               </div>
 
-              <input
-                type="submit"
-                className="btn btn-secondary"
-                value="search"
-              />
+               <input
+                 type="submit"
+                 className="btn btn-secondary"
+                 value="search"
+               />
 
-              <input
-                type="button"
-                onClick = {showCurrentPosition}
-                className="btn btn-secondary"
-                value="current"
-              />
-            </div>
-          </form>
+               <input
+                 type="button"
+                 onClick = {showCurrentPosition}
+                 className="btn btn-secondary"
+                 value="current"
+               />
+             </div>
+           </form>
 
-          <br />
-          <WeatherInfo data = {weatherData}/>
-        </div>
-      </div>
+           <br />
+            <WeatherInfo data = {weatherData}/>
+           <br />
+            <WeatherForecast lat = {weatherData.latitude} lon = {weatherData.longitude} />
+       </div>
+     </div>
     );
   } else {
   search();

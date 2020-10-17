@@ -32,21 +32,5 @@ export default function WeatherInfo(props) {
               </ul>
             </div>
           </div>
-
-          <br />
-          <div className="row">
-            <div className="col-2">
-              <ul>
-                <li>14:00</li>
-                <li>
-                  <img
-                    src="https://ssl.gstatic.com/onebox/weather/48/partly_cloudy.png"
-                    alt="cloudy"
-                  />
-                </li>
-                <li>16°C</li>
-              </ul>
-            </div>
-          </div>
-          </div> )
+         </div> )
 }
