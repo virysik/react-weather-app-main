@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import axios from "axios";
+import Loader from "react-loader-spinner";
 import WeatherForecastPreview from "./WeatherForecastPreview";
 import "./WeatherForecast.css";
 
@@ -26,6 +27,14 @@ function handleForecast(response) {
         const apiKey = "974437790c20752769b5d2ac36ae13ef";
         const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${props.lat}1&lon=${props.lon}&exclude=current,minutely,hourly,alerts&appid=${apiKey}&units=metric`;
         axios.get(url).then(handleForecast);
-        return "Loading..";
+        return (
+      <Loader
+        type="ThreeDots"
+        color="white"
+        height={50}
+        width={50}
+        timeout={3000}
+      />
+    );
     }
 }
