@@ -7,13 +7,12 @@ export default function WeatherForecast(props) {
     const [ready, setReady] = useState(false);
     const [forecast, setForecast] = useState(null);
 
-function handleForecast(response) {
-    console.log(response.data);
+function handleForecast(response) { 
     setForecast(response.data);
     setReady(true);
 }
 
-    if(ready) {
+    if(ready && props.lat === forecast.lat) {
     return (
         <div className = "WeatherForecast row">
             <WeatherForecastPreview data = {forecast.daily[1]}/>
