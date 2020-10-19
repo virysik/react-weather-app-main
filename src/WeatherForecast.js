@@ -14,7 +14,7 @@ function handleForecast(response) {
     });
 }
 
-    if(forecast.ready && props.lat === forecast.element.lat) {
+    if(forecast.ready && props.lon === forecast.element.lon && props.lat === forecast.element.lat) {
     return (
         <div className = "WeatherForecast row">
             <WeatherForecastPreview data = {forecast.element.daily[1]}/>
