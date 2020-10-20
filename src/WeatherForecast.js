@@ -25,7 +25,7 @@ function handleForecast(response) {
          </div>
     );
     } else {
-        const apiKey = "b809e096c73a6d18c5b757c80921ea71";
+        const apiKey = "974437790c20752769b5d2ac36ae13ef";
         const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${props.lat}1&lon=${props.lon}&exclude=current,minutely,hourly,alerts&appid=${apiKey}&units=metric`;
         axios.get(url).then(handleForecast);
         return (
